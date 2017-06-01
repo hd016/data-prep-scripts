@@ -2,6 +2,7 @@
 
 from tkinter import *
 
+
 ##### basic_url ####
 basic_url = "https://www.gelbeseiten.de/arzt/stuttgart/s"
 iterator_page = 0
@@ -16,25 +17,25 @@ class App:
     def __init__(self, master):
         frame = Frame(master)
         frame.pack()
-        self.button = Button(frame, text="SUCHE", fg ="blue", command=self.write_slogan)
+        self.button = Button(frame, text="SUCHE", fg ="blue", command=self.search)
         self.button.pack(side=LEFT)
+        self.entry = Entry(root)
+        self.entry.pack()
 
-    def write_slogan(self):
-        print ("Suchanfrage angenommen")
-        self.wall_output = Label(root,
-          compound = CENTER,
-          text=multiple_url)
+    def search(self):
+        self.entry_get = self.entry.get()
+        print ("Suchanfrage angenommen:", self.entry_get)
+    
+        
+        self.wall_output = Label(root,compound = CENTER,text=multiple_url)
         self.wall_output.pack()
-      
+        
 
 root = Tk()
 app = App(root)
 
-entry = Entry(root)
-
 wall_label = Label(root, text="Gelbe Seiten durchsuchen")
 
 wall_label.pack()
-entry.pack()
 
 root.mainloop()
