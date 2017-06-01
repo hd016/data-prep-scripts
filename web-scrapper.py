@@ -3,14 +3,7 @@
 from tkinter import *
 
 
-##### basic_url ####
-basic_url = "https://www.gelbeseiten.de/arzt/stuttgart/s"
-iterator_page = 0
-multiple_url = []
-for iterator_page in range(20):
-    iterator_page = iterator_page + 1
-    multiple_url.append("".join([basic_url,str(iterator_page),"\n"]))
-##### basic_url ####
+
 
 
 class App:
@@ -27,9 +20,26 @@ class App:
         print ("Suchanfrage angenommen:", self.entry_get)
     
         
+        
+
+        self.sub_url = "https://www.gelbeseiten.de/{}/stuttgart/s".format(self.entry_get)
+        
+
+        iterator_page = 0
+        multiple_url = []
+        for iterator_page in range(20):
+            iterator_page = iterator_page + 1
+            multiple_url.append("".join([self.sub_url,str(iterator_page),"\n"]))
+            
         self.wall_output = Label(root,compound = CENTER,text=multiple_url)
         self.wall_output.pack()
+        print(multiple_url)
         
+##### basic_url ####
+basic_url = "https://www.gelbeseiten.de/arzt/stuttgart/s"
+
+##### basic_url ####
+
 
 root = Tk()
 app = App(root)
