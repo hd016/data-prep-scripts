@@ -53,7 +53,7 @@ class App:
 
 root = Tk()
 app = App(root)
-
+s
 wall_label = Label(root, text="Gelbe Seiten durchsuchen")
 
 wall_label.pack()
