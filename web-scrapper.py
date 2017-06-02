@@ -2,6 +2,9 @@
 
 from tkinter import *
 from bs4 import BeautifulSoup
+import urllib.request
+import html2text
+
 
 
 class App:
@@ -27,18 +30,17 @@ class App:
             
         #self.wall_output = Label(root,compound = CENTER,text=multiple_url)
         #self.wall_output.pack()
-        
 
         parser = 0
         while parser < len(multiple_url):
             print(multiple_url[parser])
             parser += 1
-            
-       
-        
+            with urllib.request.urlopen("file:///C:/Users/HDALICI/Desktop/test.html") as url:
+                soup = BeautifulSoup(url)
 
-    
+                txt = soup.find('div', {'class' : 'body'})
 
+                print (soup.get_text())
 
 root = Tk()
 app = App(root)
