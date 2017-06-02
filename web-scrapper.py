@@ -36,13 +36,18 @@ class App:
           #  print(multiple_url[parser])
             #parser += 1
 
+        text_file = open("Output.txt" , "w")
         with urllib.request.urlopen("file:///C:/Users/HDALICI/Desktop/test.html") as url:
             soup = BeautifulSoup(url, "html.parser")
 
             names = [name.get_text() for name in soup.findAll("div", { "class" : "name m08_name" })]
             addresses = [address.get_text() for address in soup.findAll("div", { "class" : "adresse m08_adresse" })]
             for line in zip(names, addresses):
-                print("%s\n%s" % line)
+                #print("%s\n%s" % line)
+                text_file.write("--------------")
+                text_file.write("%s%s" % line)
+            text_file.close()
+            print("Prozess abgeschlossen")
 
             
 
