@@ -32,15 +32,19 @@ class App:
         #self.wall_output.pack()
 
         parser = 0
-        while parser < len(multiple_url):
-            print(multiple_url[parser])
-            parser += 1
-            with urllib.request.urlopen("file:///C:/Users/HDALICI/Desktop/test.html") as url:
-                soup = BeautifulSoup(url)
+        #while parser < len(multiple_url):
+          #  print(multiple_url[parser])
+            #parser += 1
 
-                txt = soup.find('div', {'class' : 'body'})
+        with urllib.request.urlopen("file:///C:/Users/HDALICI/Desktop/test.html") as url:
+            soup = BeautifulSoup(url, "html.parser")
 
-                print (soup.get_text())
+            names = [name.get_text() for name in soup.findAll("div", { "class" : "name m08_name" })]
+            addresses = [address.get_text() for address in soup.findAll("div", { "class" : "adresse m08_adresse" })]
+            for line in zip(names, addresses):
+                print("%s\n%s" % line)
+
+            
 
 root = Tk()
 app = App(root)
